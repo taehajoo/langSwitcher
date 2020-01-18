@@ -69,7 +69,7 @@ export class AppComponent {
         for (let i = 0; i < this.options.length; i++) {
             if (this.options[i].lang === language) {
                 this.selectedLabels = this.options[i];
-                console.log(this.selectedLabels);
+                //console.log(this.selectedLabels);
             }
         }
     }
