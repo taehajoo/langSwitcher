@@ -9,7 +9,7 @@ $secondary-blue: #00EAFF;
 
 $white: #fff;
 $off-white: #fafafa;
-$off-white-virgil-abloh: #f1f1f1;
+$off-white-virgil-abloh: #ececec;
 
 
 //mixin for ease of use
@@ -85,6 +85,12 @@ button {
     &:hover{
         box-shadow: 0 0 5px rgba(0,0,0, 0.15);
         background-color: $secondary-green;
+    }
+    @include breakpoint {
+        //break down to mobile view
+        margin-top: 20px;
+        height: 40px;
+        width: 100%;
     }
 
 
@@ -166,6 +172,13 @@ input{
         &:last-of-type{
             justify-content: flex-end;
             flex-direction: row;
+        }
+
+        h2{
+            @include breakpoint {
+            //break down to mobile view
+            font-size: 16px;
+            }
         }
     }
 
