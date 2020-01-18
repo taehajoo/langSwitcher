@@ -99,6 +99,11 @@ export class AppComponent {
 
     }
 
+
+    submit() {
+        alert("Sorry, this doesn't do anything else..");
+    }
+
 }
 
 
