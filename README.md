@@ -1,7 +1,8 @@
+# LangSwitcher
 ![Screenshot1](https://i.imgur.com/piJaK6Q.png)
 ![Screenshot2](https://i.imgur.com/eqyCfgc.png)
 
-# LangSwitcher
+This app is a demo of a simple language switching form input section using Angular 8. The page will also change to a mobile version when the viewport gets smaller.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
 
