@@ -1,5 +1,5 @@
 # LangSwitcher
-![Screenshot1](https://i.imgur.com/piJaK6Q.png)
+![Screenshot1](https://i.imgur.com/H8xQFXC.png)
 ![Screenshot2](https://i.imgur.com/eqyCfgc.png)
 
 This app is a demo of a simple language switching form input section using Angular 8. The page will also change to a mobile version when the viewport gets smaller.
