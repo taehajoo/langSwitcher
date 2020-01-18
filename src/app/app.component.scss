@@ -13,8 +13,14 @@ $off-white-virgil-abloh: #ececec;
 
 
 //mixin for ease of use
-@mixin breakpoint {
+@mixin breakpoint-size-down {
     @media (max-width: $med) {
+        @content;
+    }
+}
+
+@mixin breakpoint-size-up {
+    @media (min-width: $med) {
         @content;
     }
 }
@@ -32,9 +38,9 @@ body{
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
 }
 
+//mobile select styling
 .custom-select{
     -moz-appearance: none;
 	-webkit-appearance: none;
@@ -69,6 +75,80 @@ body{
     
 }
 
+
+//desktop custom select styling
+ng-select{
+    width:100%;
+    //need to deep target for specificity
+    .ng-dropdown-wrapper {
+        &.dropdown-wrapper{
+            display: flex;
+            input{
+                background-color: rgba(0,0,0,0);
+                font-size: 12px;
+                background-color: rbga(0,0,0,0);
+                color: $primary-blue;
+                margin-left: 10px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .dropdown-wrapper {
+        transition: 0.2s ease-out all;
+        height: 30px;
+        width: 100%;
+        border: 1px solid $secondary-blue;
+        cursor: pointer;
+        color: $primary-blue;
+        border-radius: 4px;
+        background-color: $off-white;
+        background-image:
+            //left and right side of carat icon
+            linear-gradient(45deg, transparent 50%, $primary-green 50%),
+            linear-gradient(135deg, $primary-green 50%, transparent 50%);
+        background-position:
+            calc(100% - 20px) calc(1em),
+            calc(100% - 15px) calc(1em),
+            calc(100% - 2.5em) 0.5em;
+        background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+        background-repeat: no-repeat;
+        &:hover{
+            border: 1px solid $secondary-green;
+        }
+        .dropdown {
+            /* Styles */
+            background: $off-white;
+            border-radius: 0 0 4px 4px;
+            border: 1px solid $secondary-blue;
+            //border-top: none;
+            box-sizing: border-box;
+            max-height: 400px;
+            /* Hover state */
+            .option:hover  {
+                color: $primary-green;
+            }
+            .option {
+                font-size: 12px;
+                padding: 10px;
+                color: $primary-blue;
+            }
+        }
+    }
+
+
+    ul{
+        padding: 0px;
+        margin : 0px;
+    }
+}
+
+
+
 button {
     cursor: pointer;
     font-weight: 600;
@@ -86,7 +166,7 @@ button {
         box-shadow: 0 0 5px rgba(0,0,0, 0.15);
         background-color: $secondary-green;
     }
-    @include breakpoint {
+    @include breakpoint-size-down {
         //break down to mobile view
         margin-top: 20px;
         height: 40px;
@@ -96,7 +176,7 @@ button {
 
 }
 
-input{
+.custom-input {
     border-radius: 4px;
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
@@ -106,8 +186,7 @@ input{
 	appearance: none;
     padding: 10px;
     border: 1px solid $secondary-blue;
-    background-color: $off-white;
-    
+    background-color: $off-white;  
     transition: 0.2s ease-out all;
     &:hover{
         border: 1px solid $secondary-green;
@@ -119,7 +198,8 @@ input{
 
 .wrap{
     margin : 0 auto;
-    margin-top: 20%;
+    margin-top: 15%;
+    margin-bottom: 15%;
     display: flex;
     background-color: $white;
     border-radius: 5px;
@@ -127,7 +207,7 @@ input{
     box-shadow: 0 0 20px rgba(0,0,0, 0.15);
 
 
-    @include breakpoint {
+    @include breakpoint-size-down {
         //break down to mobile view
         display: block;
     }
@@ -140,7 +220,7 @@ input{
         &:first-of-type{
             flex:0.33;
             border-right: solid 1px $off-white-virgil-abloh;
-            @include breakpoint {
+            @include breakpoint-size-down {
                 //break down to mobile view
                 border-right: none;
             }
@@ -175,10 +255,25 @@ input{
         }
 
         h2{
-            @include breakpoint {
+            @include breakpoint-size-down {
             //break down to mobile view
             font-size: 16px;
             }
+        }
+    }
+
+    .desktop-select{
+        @include breakpoint-size-down {
+            //break down to mobile view
+            display: none;
+        }
+    }
+
+
+    .mobile-select{
+        @include breakpoint-size-up {
+            //break down to mobile view
+            display: none;
         }
     }
 

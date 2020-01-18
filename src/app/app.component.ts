@@ -24,6 +24,15 @@ export class AppComponent {
     selectedLabels: any
 
 
+    //styling legend for ngselect
+    styleGuide: any = {
+    caretClass: 'caret',
+    selectBoxClass: 'dropdown-wrapper',
+    selectMenuClass: 'dropdown',
+    optionsClass: 'option' 
+};
+
+
     //options with all the possible languages and corresponding text.
     //to add new languages, add here
     options: any = [
@@ -61,19 +70,34 @@ export class AppComponent {
     ngOnInit() {
         //set English as default dropdown
         this.currentLang = this.options[0].lang;
-        this.setLabels(this.currentLang);
+        this.setLabels(this.currentLang, 'string');
     }
 
     //set new language when select has changed
-    setLabels(language) {
-        for (let i = 0; i < this.options.length; i++) {
-            if (this.options[i].lang === language) {
-                this.selectedLabels = this.options[i];
-                //console.log(this.selectedLabels);
+    setLabels(language, type) {
+
+        //traditional selectbox passes in string of language
+        if (type === 'string'){
+            for (let i = 0; i < this.options.length; i++) {
+                if (this.options[i].lang === language) {
+                    this.selectedLabels = this.options[i];
+                    this.currentLang = language;
+                    //console.log(this.selectedLabels);
+                }
+            }
+
+        //fancy select box passes in the entire option obj, so data must be treated differently
+        } else if (type === 'obj'){
+            for (let i = 0; i < this.options.length; i++) {
+                if (this.options[i].lang === language.lang) {
+                    this.selectedLabels = this.options[i];
+                    this.currentLang = language.lang;
+                    //console.log(this.selectedLabels);
+                }
             }
         }
-    }
 
+    }
 
 }
 

@@ -9,11 +9,18 @@
 		</section>
 
 
-		<section class="row">
-			<select class = "custom-select" [(ngModel)]="currentLang" (ngModelChange)="setLabels(currentLang)">
+		<section class="row mobile-select">
+			<select class = "custom-select" [(ngModel)]="currentLang" (ngModelChange)="setLabels(currentLang, 'string')">
 				<option *ngFor="let option of options"> {{option.lang}} </option>
 			</select>
 		</section>
+
+		<section class ="row desktop-select">
+			<ng-select [styleGuide]="styleGuide" [options]="options" [displayKey] = "name" [(ngModel)]="currentLang" (onChange) = "setLabels(currentLang, 'obj')">
+				
+			</ng-select>
+		</section> 
+        <!-- current : <pre>{{currentLang|json}}</pre> -->
 
 	</section>
 
@@ -31,7 +38,7 @@
 					<label for="name">{{selectedLabels.name}}</label>
 				</section>
 				<section class="col sub-col-lg">
-					<input type="text" id="name" name="name">
+					<input class = "custom-input" type="text" id="name" name="name">
 				</section>
 
 			</section>
@@ -42,7 +49,7 @@
 					<label for="name">{{selectedLabels.email}}</label>
 				</section>
 				<section class="col sub-col-lg">
-					<input type="text" id="name" name="name">
+					<input class = "custom-input" type="text" id="name" name="name">
 				</section>
 			</section>
 
@@ -52,7 +59,7 @@
 					<label for="name">{{selectedLabels.password}}</label>
 				</section>
 				<section class="col sub-col-lg">
-					<input type="text" id="name" name="name">
+					<input class = "custom-input" type="text" id="name" name="name">
 				</section>		
 			</section>
 
